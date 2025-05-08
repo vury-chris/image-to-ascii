@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Braille Art Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><b>UNIART</b></h1>
+            <div class="theme-toggle">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </header>
+
+        <main>
+            <div class="content-wrapper">
+                <div class="left-panel">
+                    <div class="input-section">
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="image">Image Input</button>
+                            <button class="tab-btn" data-tab="text">Text Input</button>
+                        </div>
+                        
+                        <div class="tab-content" id="image-tab">
+                            <div id="uploadArea" class="upload-area">
+                                <p>Drop your image here or click to browse</p>
+                                <input type="file" id="fileInput" accept="image/*">
+                                <img id="preview" src="" alt="Preview">
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="text-tab" style="display:none">
+                            <textarea id="textInput" placeholder="Enter text to convert to Braille art..."></textarea>
+                            <button id="convertTextBtn">Use Text</button>
+                        </div>
+                    </div>
+
+                    <div class="controls-section">
+                        <div class="slider-container">
+                            <label for="scale">Scale: <span id="scaleValue">100</span>%</label>
+                            <input type="range" id="scale" min="10" max="300" value="100">
+                        </div>
+                        
+                        <div class="slider-container">
+                            <label for="threshold">Threshold: <span id="thresholdValue">128</span></label>
+                            <input type="range" id="threshold" min="0" max="255" value="128">
+                        </div>
+
+                        <div class="checkbox-container">
+                            <label for="invert">
+                                <input type="checkbox" id="invert">
+                                Invert Colors
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-panel">
+                    <div id="outputContainer" class="output-section">
+                        <h2>Braille Art Output (<span id="charCount">0</span> characters)</h2>
+                        <div class="output-actions">
+                            <button id="copyBtn" disabled>Copy to Clipboard</button>
+                            <button id="downloadBtn" disabled>Download as Text</button>
+                        </div>
+                        <pre id="brailleOutput"></pre>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
